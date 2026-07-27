@@ -1,68 +1,77 @@
 # AI Research & Knowledge Assistant
 
-A production-ready AI Research & Knowledge Assistant built with FastAPI, ChromaDB, Sentence Transformers, TensorFlow, and Google Gemini. The system enables intelligent document processing, semantic search, Retrieval-Augmented Generation (RAG), document summarization, comparison, analytics, and automatic document classification.
+A production-ready AI Research & Knowledge Assistant built with FastAPI, ChromaDB, Sentence Transformers, TensorFlow, and Google Gemini. The application enables intelligent document processing, semantic search, Retrieval-Augmented Generation (RAG), document classification, document summarization, comparison, and analytics through a clean REST API.
 
 ---
 
-## Features
+# Features
 
 - PDF Upload & Processing
-- Page-wise Text Extraction
+- Background Document Processing
+- Page-wise PDF Text Extraction
 - Intelligent Text Chunking
 - SentenceTransformer Embeddings
-- ChromaDB Vector Storage
+- ChromaDB Vector Database
 - Semantic Search
-- Hybrid Search
 - Retrieval-Augmented Generation (RAG)
-- Citation-based Question Answering
+- Citation-Based Question Answering
+- Conversation Memory
 - TensorFlow Document Classification
-- Multi-document Summarization
-- Multi-document Comparison
-- System Analytics
-- Swagger API Documentation
+- Multi-Document Summarization
+- Multi-Document Comparison
+- System Analytics Dashboard
+- Interactive Swagger Documentation
 
 ---
 
-## Tech Stack
+# Tech Stack
 
-### Backend
+## Backend
 
 - FastAPI
 - Python 3.10
 
-### AI & NLP
+## AI & Machine Learning
 
 - Google Gemini 2.5 Flash
 - Sentence Transformers
 - TensorFlow
 - Scikit-learn
 
-### Database
+## Vector Database
 
-- SQLite
 - ChromaDB
 
-### Document Processing
+## Database
+
+- SQLite
+
+## Document Processing
 
 - PyMuPDF
 
 ---
 
-## Project Structure
+# Project Structure
 
-```
+```text
 ai-research-assistant/
 │
 ├── config/
 ├── data/
+│   ├── dataset/
+│   ├── raw_documents/
+│   └── vector_db/
+│
 ├── models/
+│
 ├── src/
+│   ├── analytics/
 │   ├── database/
 │   ├── document_processing/
 │   ├── ml/
 │   ├── rag/
-│   ├── vector_store/
-│   └── analytics/
+│   └── vector_store/
 │
 ├── tests/
 ├── main.py
@@ -72,41 +81,41 @@ ai-research-assistant/
 
 ---
 
-## Installation
+# Installation
 
-Clone the repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/NaveenTechist/ai-research-assistant.git
 ```
 
-Go into the project
+## Navigate to Project
 
 ```bash
 cd ai-research-assistant
 ```
 
-Create Virtual Environment
+## Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate
+## Activate Virtual Environment
 
-Windows
+### Windows
 
 ```bash
 venv\Scripts\activate
 ```
 
-Linux/macOS
+### Linux / macOS
 
 ```bash
 source venv/bin/activate
 ```
 
-Install dependencies
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -114,128 +123,173 @@ pip install -r requirements.txt
 
 ---
 
-## Environment Variables
+# Environment Variables
 
-Create a `.env` file
+Create a `.env` file in the project root.
 
 ```env
 DATABASE_URL=sqlite:///./data/database.db
-GOOGLE_API_KEY=YOUR_API_KEY
+GOOGLE_API_KEY=YOUR_GOOGLE_API_KEY
 VECTOR_DB_DIR=data/vector_db
 MODEL_PATH=models/tf_classifier.h5
 ```
 
 ---
 
-## Run Project
+# Run the Application
 
 ```bash
 uvicorn main:app --reload
 ```
 
-Open Swagger
+Open Swagger UI
 
-```
+```text
 http://localhost:8000/docs
 ```
 
 ---
 
-## API Endpoints
+# API Endpoints
 
-### Document
+## Document Management
 
-- POST `/documents/upload`
-
-### Search
-
-- POST `/search/semantic`
-- POST `/search/question`
-
-### Analysis
-
-- POST `/analysis/summarize`
-- POST `/analysis/compare`
-
-### Analytics
-
-- GET `/analytics/metrics`
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/documents/upload` | Upload and process PDF documents |
 
 ---
 
-## AI Pipeline
+## Search
 
-```
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/search/semantic` | Perform semantic similarity search |
+| POST | `/search/question` | Ask questions using Retrieval-Augmented Generation (RAG) |
+
+---
+
+## Analysis
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/analysis/summarize` | Generate document summaries |
+| POST | `/analysis/compare` | Compare multiple documents |
+
+---
+
+## Analytics
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/analytics/metrics` | Retrieve system analytics |
+
+---
+
+# AI Processing Pipeline
+
+```text
 PDF Upload
       │
       ▼
-PDF Parsing
+Background Processing
       │
       ▼
-Chunking
+PDF Text Extraction
+      │
+      ▼
+Text Chunking
       │
       ▼
 SentenceTransformer Embeddings
       │
       ▼
-ChromaDB
+ChromaDB Vector Storage
       │
       ▼
-Semantic Search
+Semantic Retrieval
       │
       ▼
-Gemini RAG
+Google Gemini
       │
       ▼
-Answer with Citations
+Answer Generation with Citations
 ```
 
 ---
 
-## Machine Learning Pipeline
+# Machine Learning Pipeline
 
-```
-Dataset
-    │
-    ▼
-TensorFlow Training
-    │
-    ▼
-Saved .h5 Model
-    │
-    ▼
-Document Classification
+```text
+Training Dataset
+        │
+        ▼
+Text Preprocessing
+        │
+        ▼
+TensorFlow Model Training
+        │
+        ▼
+Model Serialization
+        │
+        ▼
+Automatic Document Classification
 ```
 
 ---
 
-## Testing
+# Testing
 
-Swagger
+Start the application.
 
+```bash
+uvicorn main:app --reload
 ```
+
+Open Swagger UI.
+
+```text
+http://localhost:8000/docs
+```
+
+Upload the sample documents provided in the project:
+
+- `rag-testing-pdf-1.pdf`
+- `rag-testing-pdf-2.pdf`
+
+These sample PDFs are included to help you test:
+
+- Document Upload
+- Semantic Search
+- Question Answering (RAG)
+- Document Summarization
+- Document Comparison
+- Analytics
+
+You can also upload your own PDF documents for testing.
+
+---
+
+# API Documentation
+
+Interactive Swagger Documentation
+
+```text
 http://localhost:8000/docs
 ```
 
 ---
 
-## Future Improvements
-
-- Conversation Memory
-- Background Processing
-- Authentication
-- PostgreSQL Support
-- Docker Deployment
-- Cloud Storage
-- Query Analytics Dashboard
-
----
 
 **Naveen Yarramsetti**
 
 GitHub
+
+```text
 https://github.com/NaveenTechist
+```
 
 LinkedIn
 
+```text
 https://linkedin.com/in/naveen-yarramsetti
