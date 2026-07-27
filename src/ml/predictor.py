@@ -2,7 +2,7 @@ import pickle
 import numpy as np
 import tensorflow as tf
 
-MODEL_PATH = "models/tf_classifier.h5"
+MODEL_PATH = "models/tf_classifier.keras"
 LABEL_ENCODER_PATH = "models/label_encoder.pkl"
 
 class DocumentPredictor:
@@ -24,15 +24,11 @@ class DocumentPredictor:
         self,
         text: str
     ):
-        prediction = self.model.predict(
-            np.array([text]),
-            verbose=0
-        )
+        prediction = self.model.predict(tf.constant([text]), verbose=0)
 
         predicted_index = int(
             np.argmax(prediction)
         )
-
         confidence = float(
             prediction[0][predicted_index]
         )

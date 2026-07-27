@@ -73,11 +73,9 @@ async def upload_document(
     document_text = "\n".join(
     page["text"] for page in pages
     )
-    predictor = DocumentPredictor()
-    prediction = predictor.predict(
-    document_text
-    )    
-    document.category = prediction["category"]
+
+    document_text = document_text[:10000]
+
     predictor = DocumentPredictor()
     prediction = predictor.predict(
         document_text

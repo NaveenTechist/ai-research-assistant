@@ -1,12 +1,16 @@
 import os
 import pickle
 import tensorflow as tf
+import keras
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from src.ml.dataset_prep import DatasetPreparator
 
-MODEL_PATH = "models/tf_classifier.h5"
+MODEL_PATH = "models/tf_classifier.keras"
 LABEL_ENCODER_PATH = "models/label_encoder.pkl"
+
+print("TensorFlow:", tf.__version__)
+print("Keras:", tf.keras.__version__)
 
 class DocumentClassifier:
 
